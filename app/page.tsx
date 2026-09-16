@@ -130,11 +130,14 @@ const SCHEDULE = [
 ];
 
 function Timeline() {
-  const [today, setToday] = useState<string | null>(null);
-  React.useEffect(() => {
-    const d = new Date();
-    setToday(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`);
-  }, []);
+  const today = React.useSyncExternalStore(
+    () => () => {},
+    () => {
+      const d = new Date();
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    },
+    () => null,
+  );
 
   const status = (start: string, end: string) => {
     if (!today) return "upcoming";
@@ -402,9 +405,12 @@ export default function Home() {
           <a href="#judging">Judging criteria</a>
           <a href="#prizes">Rewards</a>
         </div>
-        <a className="nav-cta-pill" href="/apply">
-          Apply now <ArrowUpRight size={14} weight="bold" />
-        </a>
+        <div className="nav-auth">
+          <a className="nav-login" href="/login">Log in</a>
+          <a className="nav-cta-pill" href="/register">
+            Register <ArrowUpRight size={14} weight="bold" />
+          </a>
+        </div>
         <button
           className="mobile-menu-btn"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -422,8 +428,9 @@ export default function Home() {
           <a href="#timeline"  onClick={closeMenu}>Timeline</a>
           <a href="#judging"   onClick={closeMenu}>Judging criteria</a>
           <a href="#prizes"    onClick={closeMenu}>Rewards</a>
-          <a href="/apply" className="mobile-drawer-cta" onClick={closeMenu}>
-            Apply now <ArrowUpRight size={14} weight="bold" />
+          <a href="/login" onClick={closeMenu}>Log in</a>
+          <a href="/register" className="mobile-drawer-cta" onClick={closeMenu}>
+            Register <ArrowUpRight size={14} weight="bold" />
           </a>
         </div>
       </div>
@@ -442,7 +449,7 @@ export default function Home() {
         />
         <div className="hero-inner" style={{ position: 'relative', zIndex: 1 }}>
           <div className="hero-copy">
-            <p className="hero-kicker">The Krifth hackathon · build for the real world</p>
+            <p className="hero-kicker"><span className="hero-kicker-dot" aria-hidden="true" />The Krifth hackathon<span className="hero-kicker-extra"> · build for the real world</span></p>
             <h1>
               <span className="hero-title-line">Hack with</span>
               <span className="hero-highlight-text hero-title-line">Krifth.</span>
@@ -451,8 +458,8 @@ export default function Home() {
               Join the Krifth Hackathon to create a theme or payment template for a local shop <br className="hero-copy-break" />or Instagram-first brand then turn their products, story, and checkout into one polished experience.
             </p>
             <div className="hero-actions">
-              <a className="aurora-button" href="/apply">
-                Apply now <ArrowUpRight size={16} weight="bold" />
+              <a className="aurora-button" href="/register">
+                Register now <ArrowUpRight size={16} weight="bold" />
               </a>
               <a className="ghost-button" href="#challenge">
                 View challenge <ArrowUpRight size={16} weight="bold" />
@@ -502,8 +509,8 @@ export default function Home() {
           Join the Krifth Hackathon to help a local shop or Instagram brand look better online, accept payments with confidence, and turn attention into sales.
           </p>
           <div className="cta-actions">
-            <a className="aurora-button" href="/apply">
-              Apply now <ArrowUpRight size={16} weight="bold" />
+            <a className="aurora-button" href="/register">
+              Register now <ArrowUpRight size={16} weight="bold" />
             </a>
             <a className="ghost-button" href="#timeline">
               See timeline <ArrowUpRight size={16} weight="bold" />
