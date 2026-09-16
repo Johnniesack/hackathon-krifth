@@ -9,116 +9,6 @@ import KrifthLogo from "./components/KrifthLogo";
 
 
 
-/* ─────────────── HOW IT WORKS ─────────────── */
-
-function HowItWorks() {
-  const steps = [
-    {
-      num: "01",
-      title: "Join the build room",
-      desc: "Register your team, get the Krifth starter brief, and pick a real shop, creator, or Instagram seller whose checkout experience deserves better.",
-    },
-    {
-      num: "02",
-      title: "Turn attention into orders",
-      desc: "Use Krifth to shape the storefront, product story, and payment path. Make it feel like the merchant's brand, not a generic template.",
-    },
-    {
-      num: "03",
-      title: "Demo it, sell it, win it",
-      desc: "Walk judges from first discovery to paid order. The strongest teams win by proving customers can understand, trust, and complete the sale.",
-    },
-  ];
-
-  return (
-    <section className="how-section" id="how-it-works">
-      <div className="how-inner">
-        <div className="how-header">
-          <p className="eyebrow">How it works</p>
-          <h2>Join Krith. Leave with a winning store.</h2>
-          <p className="how-subtext">
-            Bring a team, choose a real merchant, and build the buying experience that helps them get paid. Winners are picked on usefulness, craft, and how clearly the demo turns interest into checkout.
-          </p>
-          <div className="how-prize-strip" aria-label="Winning criteria">
-            <span>Real merchant</span>
-            <span>Working flow</span>
-            <span>Clear sale</span>
-          </div>
-        </div>
-
-        <div className="how-steps">
-          {steps.map(({ num, title, desc }) => (
-            <article className="how-step" key={num}>
-              <span className="step-num">{num}</span>
-              <div className="step-content">
-                <h3 className="step-title">{title}</h3>
-                <p className="step-desc">{desc}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─────────────── WHAT IS KRIFTH ─────────────── */
-
-function WhatIsKrifth() {
-  const cards = [
-    {
-      icon: <Sparkle size={20} weight="duotone" />,
-      title: "Brand Setup",
-      desc: "Configure your domain, merchant identity, and operational preferences in one centralized console.",
-    },
-    {
-      icon: <ShoppingBag size={20} weight="duotone" />,
-      title: "Product Catalog",
-      desc: "Manage SKUs, variants, multi-channel pricing, and real-time inventory rules with zero latency.",
-    },
-    {
-      icon: <ChartBar size={20} weight="duotone" />,
-      title: "Commercial Ops",
-      desc: "Streamline checkout routing, payment settlement, order fulfillment, and merchant analytics.",
-    },
-    {
-      icon: <Lightning size={20} weight="duotone" />,
-      title: "Storefront Launch",
-      desc: "Deploy custom headless shopping experiences that feel lightning fast on every device.",
-    },
-  ];
-
-  return (
-    <section className="what-section" id="about">
-      <div className="what-inner">
-        <div className="what-header">
-          <p className="eyebrow">What is Krifth?</p>
-          <h2 className="what-heading">
-            Everything your brand needs<br />to sell, without the chaos.
-          </h2>
-          <p className="what-subtext">
-            Krifth combines storefront, catalog, and operations into one system built for modern merchants.
-          </p>
-        </div>
-
-        <div className="what-cards-grid">
-          {cards.map(({ icon, title, desc }) => (
-            <article className="what-card" key={title}>
-              <div className="what-card-top">
-                <span className="what-card-icon">{icon}</span>
-                <span className="what-accent-dot" />
-              </div>
-              <h3 className="what-card-title">{title}</h3>
-              <p className="what-card-desc">{desc}</p>
-              <div className="what-accent-line" />
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ─────────────── THE CHALLENGE ─────────────── */
 
 function TheChallenge() {
@@ -190,7 +80,7 @@ function WhatYouCanBuild() {
   ];
 
   return (
-    <section className="build-section" id="possibilities">
+    <section className="build-section" id="about">
       <div className="build-inner">
         <div className="build-header">
           <div className="build-header-left">
@@ -229,37 +119,30 @@ function WhatYouCanBuild() {
 
 /* ─────────────── TIMELINE ─────────────── */
 
+const SCHEDULE = [
+  { start: "2026-09-21", end: "2026-09-21", day: "21", month: "Sep", title: "Registration opens", note: "Teams can start applying" },
+  { start: "2026-10-29", end: "2026-10-29", day: "29", month: "Oct", title: "Registration ends", note: "Last day to apply" },
+  { start: "2026-10-30", end: "2026-10-30", day: "30", month: "Oct", title: "Introduction", note: "Kickoff and brief walkthrough" },
+  { start: "2026-10-31", end: "2026-11-03", day: "31", dayEnd: "03", month: "Oct", monthEnd: "Nov", title: "Hackathon", note: "Four days of building", major: true },
+  { start: "2026-11-04", end: "2026-11-04", day: "04", month: "Nov", title: "Submission deadline", note: "Final builds due" },
+  { start: "2026-11-05", end: "2026-11-05", day: "05", month: "Nov", title: "Judging", note: "Judges review every demo" },
+  { start: "2026-11-06", end: "2026-11-06", day: "06", month: "Nov", title: "Closing & prizes", note: "Winners announced" },
+];
+
 function Timeline() {
-  const timelineItems = [
-    {
-      day: "01",
-      label: "Access + brief",
-      title: "Choose the merchant",
-      desc: "Lock the shop, define the audience, and map the buying moment you want Krifth to improve.",
-      active: false,
-    },
-    {
-      day: "02",
-      label: "Core build",
-      title: "Assemble the storefront",
-      desc: "Build the theme structure, product pages, collection logic, and first pass of the payment flow.",
-      active: true,
-    },
-    {
-      day: "03",
-      label: "Refine + test",
-      title: "Pressure test the sale",
-      desc: "Tighten mobile layouts, checkout confidence, product storytelling, and the handoff between discovery and purchase.",
-      active: false,
-    },
-    {
-      day: "04",
-      label: "Demo night",
-      title: "Show the working shop",
-      desc: "Present the brand, walk through the customer journey, and show how Krifth helps it move from attention to revenue.",
-      active: false,
-    },
-  ];
+  const [today, setToday] = useState<string | null>(null);
+  React.useEffect(() => {
+    const d = new Date();
+    setToday(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`);
+  }, []);
+
+  const status = (start: string, end: string) => {
+    if (!today) return "upcoming";
+    if (today > end) return "done";
+    if (today >= start) return "live";
+    return "upcoming";
+  };
+  const nextIdx = today ? SCHEDULE.findIndex(({ end }) => today <= end) : -1;
 
   return (
     <section className="timeline-section" id="timeline">
@@ -269,30 +152,40 @@ function Timeline() {
             <span className="premium-eyebrow">Timeline</span>
             <div className="eyebrow-line"></div>
           </div>
-          <h2>Four days from signal<br/>to <span className="text-gradient">shipped demo.</span></h2>
+          <h2>Key dates,<br/><span className="text-gradient">September to November.</span></h2>
           <p className="timeline-subtext-premium">
-            The event is paced like a real launch: pick the brand, build the system, test the purchase path, then show the store.
+            Registration opens 21 September. The build runs from 31 October to 3 November, and winners are announced on 6 November.
           </p>
         </div>
 
-        <div className="timeline-cards">
-          {timelineItems.map(({ day, label, title, desc, active }, idx) => (
-            <div className={`timeline-card ${active ? 'is-active' : ''}`} key={day}>
-              <div className="card-bg-number">{day}</div>
-              <div className="card-top">
-                <div className="card-dot-wrap">
-                  <div className="card-dot"></div>
+        <ol className="sched">
+          {SCHEDULE.map(({ start, end, day, dayEnd, month, monthEnd, title, note, major }, idx) => {
+            const st = status(start, end);
+            return (
+              <li
+                key={start}
+                className={`sched-item sched-${st}${major ? " sched-major" : ""}${idx === nextIdx ? " sched-next" : ""}`}
+              >
+                <span className="sched-node" aria-hidden="true" />
+                <time className="sched-date" dateTime={start}>
+                  <span className="sched-day">{day}{dayEnd && <>–{dayEnd}</>}</span>
+                  <span className="sched-month">{month}{monthEnd && <> – {monthEnd}</>}</span>
+                </time>
+                <div className="sched-body">
+                  <h3 className="sched-title">{title}</h3>
+                  <p className="sched-note">{note}</p>
                 </div>
-                <span className="card-label">DAY {parseInt(day)} - {label}</span>
-                {active && <span className="card-badge">LIVE window</span>}
-              </div>
-              <div className="card-content">
-                <h3 className="card-title">{title}</h3>
-                <p className="card-desc">{desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+                {st === "live" ? (
+                  <span className="sched-tag sched-tag-live">Live now</span>
+                ) : idx === nextIdx ? (
+                  <span className="sched-tag">Up next</span>
+                ) : major ? (
+                  <span className="sched-tag">4 days</span>
+                ) : null}
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );
@@ -586,10 +479,8 @@ export default function Home() {
       </section>
 
       {/* ALL SECTIONS */}
-      <WhatIsKrifth />
-      <TheChallenge />
       <WhatYouCanBuild />
-      <HowItWorks />
+      <TheChallenge />
       <Timeline />
       <JudgingCriteria />
       <Prizes />
@@ -614,8 +505,8 @@ export default function Home() {
             <a className="aurora-button" href="/apply">
               Apply now <ArrowUpRight size={16} weight="bold" />
             </a>
-            <a className="ghost-button" href="#how-it-works">
-              Get access <ArrowUpRight size={16} weight="bold" />
+            <a className="ghost-button" href="#timeline">
+              See timeline <ArrowUpRight size={16} weight="bold" />
             </a>
           </div>
         </div>
