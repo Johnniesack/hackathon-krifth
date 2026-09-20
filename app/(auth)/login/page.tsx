@@ -2,10 +2,12 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import SocialButtons from "../SocialButtons";
 import { ArrowRight, Eye, EyeSlash } from "@phosphor-icons/react";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -20,8 +22,8 @@ export default function LoginPage() {
       return;
     }
     setLoading(true);
-    // TODO: replace with the real auth call, then route to /dashboard
-    window.setTimeout(() => setLoading(false), 900);
+    // TODO: replace with the real auth call; this only simulates a successful login
+    window.setTimeout(() => router.push("/dashboard/quests"), 700);
   };
 
   return (
